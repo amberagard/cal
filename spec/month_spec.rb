@@ -61,5 +61,29 @@ RSpec.describe Month do
     it "translates December" do
       Month.new(12, 2012).name.should == "December"
     end
+
+    it "should have 31 days" do
+      Month.new(8, 1934).month_length.should == 31
+    end
+
+    it "should have 29 days" do
+      Month.new(2, 2576).month_length.should == 29
+    end
+
+    it "should have 30 days" do
+      Month.new(11, 1876).month_length.should == 30
+    end
+
+    it "should have 28 days" do
+      Month.new(2, 2005).month_length.should == 28
+    end
+
+    it "should start on a Wednesday" do
+      Month.new(9, 2213).month_day_start.should == "Wednesday"
+    end
+
+    it "should" do
+      Month.new(7, 2014).weeks_in_a_month.should == ["       1  2  3  4  5", " 6  7  8  9 10 11 12", "13 14 15 16 17 18 19", "20 21 22 23 24 25 26", "27 28 29 30 31      ", "                    "]
+    end
   end
 end
