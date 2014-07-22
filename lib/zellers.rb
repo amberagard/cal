@@ -4,7 +4,7 @@ class ZellersCongruence
     months = ["March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "January", "February"]
     days = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
     q = day
-    m = months.index(month.capitalize) + 3
+    m = months.index(month) + 3
     y = (m <= 12) ? year : year - 1
     k = y % 100
     j = y / 100

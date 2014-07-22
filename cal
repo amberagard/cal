@@ -1,8 +1,37 @@
 #!/usr/bin/env ruby
 
 require_relative 'lib/month'
+require_relative 'lib/year'
 
-month = ARGV[0].to_i
-year = ARGV[1].to_i
-month = Month.new(month, year)
-puts month.to_s
+first = ARGV[0].to_i
+last = ARGV[1].to_i
+
+if ARGV[2]
+  puts "cal: usage cal[[month] year]"
+  exit 64
+end
+
+if ARGV[1]
+  month = Month.new(first, last)
+  if (first < 1 or first > 12) and (last < 1800 or last > 3000)
+    puts "#{first} is not a month (1 - 12)"
+    puts "#{last} is not in range (1800 - 3000)"
+    exit 64
+  end
+  if first < 1 or first > 12
+    puts "#{first} is not a month (1 - 12)"
+    exit 64
+  end
+  if last < 1800 or last > 3000
+    puts "#{last} is not in range (1800 - 3000)"
+    exit 64
+  end
+  puts month.to_s
+else
+  year = Year.new(first)
+  if first < 1800 or first > 3000
+    puts "#{last} is not in range (1800 - 3000)"
+    exit 64
+  end
+  puts year.to_s
+end

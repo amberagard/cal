@@ -82,4 +82,11 @@ class Month
     output << "#{weeks_in_a_month_rstrip.join("\n")}\n"
     output
   end
+
+  def to_a
+    output = []
+    output << "#{name}".center(20)
+    output << "#{weekdays}"
+    output.concat(weeks_in_a_month)
+  end
 end
